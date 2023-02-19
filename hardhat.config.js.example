@@ -1,0 +1,26 @@
+/** @type import('hardhat/config').HardhatUserConfig */
+// require('ethers')
+require("hardhat-deploy");
+require("@nomiclabs/hardhat-ethers");
+require("@nomiclabs/hardhat-etherscan");
+
+const account = "<your private key>"
+const url = "<your rpc node>"
+
+module.exports = {
+  solidity: "0.8.17",
+  namedAccounts: {
+    deployer: {
+      default: 0
+    }
+  },
+  networks: {
+    goerli: {
+      accounts: [account],
+      url: `${url}`
+    }
+  },
+  etherscan: {
+    apiKey: "<ethscan ekey>"
+  }
+};
