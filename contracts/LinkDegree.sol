@@ -13,6 +13,9 @@ contract LinkDegree is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnabl
 
     Counters.Counter private _tokenIdCounter;
 
+    mapping(address => bool) public whitelist;
+    string constant INITIAL_METADAT = "ipfs://QmW8h5Gtw32yvtfEugFRyDWAaAVALQeLB5iRif6neYDJ2Q";
+
     // event to record a certificate is granted to an address
     event Attest(address indexed to, uint256 indexed tokenId);
 
@@ -22,11 +25,39 @@ contract LinkDegree is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnabl
     constructor() ERC721("LinkDegree", "LD") {}
 
     // the address to be granted to mint a non-transferable token
-    function safeMint() public onlyOwner {
+    function safeMint() public {
+        require(whitelist[msg.sender], "You are not eligible yet");
+        require(balanceOf(msg.sender) < 1, "You can only have one SBT");
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(msg.sender, tokenId);
-        _setTokenURI(tokenId, "");
+        _setTokenURI(tokenId, INITIAL_METADAT);
+    }
+
+
+    function addToWhitelist(address[] calldata toAddAddrs) 
+        external 
+        onlyOwner
+    {
+        for(uint256 i = 0; i < toAddAddrs.length; i++) {
+            whitelist[toAddAddrs[i]] = true;
+        }
+    }
+
+    function removeFromWhitelist(address[] calldata toRemoveAddrs) 
+        external 
+        onlyOwner 
+    {
+        for(uint256 i = 0; i < toRemoveAddrs.length; i++) {
+            delete whitelist[toRemoveAddrs[i]];
+        }
+    }
+
+    function updateTokenUri(uint256 tokenId, string memory metadata) 
+        external 
+        onlyOwner
+    {
+        _setTokenURI(tokenId, metadata);
     }
 
     // The following functions are overrides required by Solidity.
@@ -36,7 +67,8 @@ contract LinkDegree is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnabl
         override(ERC721, ERC721Enumerable)
     {
         // to make sure the token can only be granted or revoked
-        require(from == address(0) || to == address(0), "Link Degree is non-transferable");
+        // 
+        require(from == owner() || from == address(0) || to == address(0), "Link Degree is non-transferable");
         super._beforeTokenTransfer(from, to, tokenId, batchSize);
     }
 
@@ -47,7 +79,7 @@ contract LinkDegree is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnabl
         uint256 batchSize
     ) internal override 
     {
-        if (from == address(0)) {
+        if (from == address(0) || from == owner()) {
             emit Attest(to, firstTokenId);
         } else if(to == address(0)) {
             emit Revoke(to, firstTokenId);
@@ -65,8 +97,9 @@ contract LinkDegree is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnabl
      * burn is implemented by ERC721Burnable.sol
      * */ 
     function revoke(uint256 tokenId) external onlyOwner {
-        require(ownerOf(tokenId) == msg.sender);
+        address addrToRemove = ownerOf(tokenId);
         _burn(tokenId);
+        delete whitelist[addrToRemove];
     }
 
     function tokenURI(uint256 tokenId)
