@@ -1,0 +1,16 @@
+{
+    "description": "The Chainlink bootcamp certificate is an SBT (Soul Bound Token) issued to developers who participate in the Chainlink bootcamp and successfully complete programming tasks. This SBT cannot be traded.",
+    "external_url": "https://openseacreatures.io/3",
+    "image": "https://ipfs.filebase.io/ipfs/Qmby3wr2FFtqp4iEKaHdbLwsVJk4zMxQAJmZGCakgcf5Cv",
+    "name": "Chainlink Bootcamp Certificate Level 1",
+    "attributes": [
+      {
+        "trait_type": "Day 1 task: Create a NFT collection with CL VRF.",
+        "value": "Done"
+      },
+      {
+        "trait_type": "Day 2 task: Create a dynamic NFT with CL functions.",
+        "value": "Undo"
+      }
+    ]
+  }
