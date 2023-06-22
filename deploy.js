@@ -1,9 +1,9 @@
 // run yarn hardhat run deploy.js to deploy the contract
 async function main() {
-  const myContract = await hre.ethers.getContractFactory("LinkDegree")
+  const myContract = await hre.ethers.getContractFactory("<input the contract name here>")
   myContractDeployed = await myContract.deploy();
   await myContractDeployed.deployed();
-  console.log("Contract LinkDegree has been deployed at ", myContractDeployed.address)
+  console.log("Contract has been deployed at ", myContractDeployed.address)
 }
 
 main()

@@ -46,6 +46,8 @@ contract ChainlinkCertificate is ERC721, ERC721Enumerable, ERC721URIStorage, ERC
     }
 
     function mintForOther(uint8 level, address developer) public onlyOwner{
+        require(level == 1 || level == 2, "Level can only be 1 or 2");
+        require(balanceOf(msg.sender) < 1, "The developer can only have one Certificate");
         if(level == 1) {
             uint256 tokenId = _tokenIdCounter.current();
             _tokenIdCounter.increment();
@@ -138,7 +140,11 @@ contract ChainlinkCertificate is ERC721, ERC721Enumerable, ERC721URIStorage, ERC
     function revoke(uint256 tokenId) external onlyOwner {
         address addrToRemove = ownerOf(tokenId);
         _burn(tokenId);
-        delete whitelist[addrToRemove];
+        if(whitelistForL1[addrToRemove]) {
+            delete whitelistForL1[addrToRemove];
+        } else if(whitelistForL2[addrToRemove]){
+            delete whitelistForL2[addrToRemove];
+        }
     }
 
     function tokenURI(uint256 tokenId)
