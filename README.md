@@ -40,7 +40,7 @@ Address is: `0xb054CAf794cd34a41BDBD3C852eC68f9a54a1C4f`(Polygon mainnet).
 You can see all certificates at: https://opensea.io/collection/linkdegree-1 <br><br>
 Metadata for VRF: https://ipfs.filebase.io/ipfs/QmUd9weBfoid8g2aWYPQNJhRXaMTg2k3ZKjcFjLydAX7iz <br><br>
 Metadata for VRF and Functions: https://ipfs.filebase.io/ipfs/QmNvVtkipuqv8WbBxB7cRPhqXGZho4hzmrPemCkMtKXqsp <br><br>
-Metadata for CCIP: https://ipfs.filebase.io/ipfs/QmUd9weBfoid8g2aWYPQNJhRXaMTg2k3ZKjcFjLydAX7iz
+Metadata for CCIP: https://ipfs.filebase.io/ipfs/QmYuu6gx4xnHE76z8z4KF8KoLfPwyLcoPHLuTnGQRs7Gmi/QmdbLowN4pPaPXP4269YpbZFzFxaieYhkN6KtRL96bS8Ji
 ### Chainlink Learning Path certificate
 Address is: `0x5a1805ffd9cfa1f79fb3cfced12e02e342672e2e`(Polygon mainnet).
 
