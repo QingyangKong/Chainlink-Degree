@@ -38,9 +38,9 @@ yarn hardhat --network goerli verify <contract addr>
 Address is: `0xb054CAf794cd34a41BDBD3C852eC68f9a54a1C4f`(Polygon mainnet).
 
 You can see all certificates at: https://opensea.io/collection/linkdegree-1 
-Metadata for VRF: https://ipfs.filebase.io/ipfs/QmUd9weBfoid8g2aWYPQNJhRXaMTg2k3ZKjcFjLydAX7iz
-Metadata for VRF and Functions: https://ipfs.filebase.io/ipfs/QmNvVtkipuqv8WbBxB7cRPhqXGZho4hzmrPemCkMtKXqsp 
-Metadata for CCIP: https://ipfs.filebase.io/ipfs/QmUd9weBfoid8g2aWYPQNJhRXaMTg2k3ZKjcFjLydAX7iz
+Metadata for VRF: https://ipfs.filebase.io/ipfs/QmUd9weBfoid8g2aWYPQNJhRXaMTg2k3ZKjcFjLydAX7iz <br>
+Metadata for VRF and Functions: https://ipfs.filebase.io/ipfs/QmNvVtkipuqv8WbBxB7cRPhqXGZho4hzmrPemCkMtKXqsp <br>
+Metadata for CCIP: https://ipfs.filebase.io/ipfs/QmUd9weBfoid8g2aWYPQNJhRXaMTg2k3ZKjcFjLydAX7iz<br>
 ### Chainlink Learning Path certificate
 Address is: `0x5a1805ffd9cfa1f79fb3cfced12e02e342672e2e`(Polygon mainnet).
 
